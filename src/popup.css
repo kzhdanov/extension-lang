@@ -7,23 +7,29 @@
   cursor: pointer;
   display: inline-block;
   font-family: "Helvetica Neue",sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   line-height: 20px;
-  margin: 0;
   outline: none;
-  padding: 13px 23px;
   position: relative;
   text-align: center;
   text-decoration: none;
   touch-action: manipulation;
-  transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
   user-select: none;
   -webkit-user-select: none;
-  width: 150px;
+  width: 100px;
+  padding: 2px;
+  margin: 15px 0 0 0;
+}
+
+.button:hover {
+  background-color: #F1F1F1;
 }
 
 section {
   opacity: .6;
-  padding: 12px;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+  padding: 10px;
 }

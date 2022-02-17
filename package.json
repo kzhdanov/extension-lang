@@ -1,5 +1,11 @@
 {
   "name": "extension-lang",
   "version": "1.0.0",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "watch": "webpack --watch"
+  },
+  "devDependencies": {
+    "webpack": "^5.69.1"
+  }
 }

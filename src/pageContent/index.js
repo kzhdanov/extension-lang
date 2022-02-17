@@ -1,54 +1,29 @@
-(() => {
-  const snfIframePath = '#snfiller iframe';
-  const contentId = 'content';
+import { getSignNowIframe, getContent } from './config';
+import textNodes from './textNodes';
 
-  const getSignNowIframe = (iframePath = snfIframePath) => {
-    return window.document.querySelector(iframePath)
+const toLengthenValuesSimple = (factor) => (value) => {
+  let result = value;
+  let coef = Number(factor);
+
+  while(coef !== 1) {
+    result = result + value;
+    coef--;
   }
 
-  const getContent = (snfFrame) => {
-    return snfFrame.contentWindow.document.getElementById(contentId)
-  }
+  return result;
+};
 
-  const getAllTextNodes = (source) => {
-    let node = null;
-    const textNodes = [];
-    const walker = document.createTreeWalker(
-      source,
-      NodeFilter.SHOW_TEXT,
-      null,
-      false
-    );
-
-    while(node = walker.nextNode()) {
-      textNodes.push(node);
-    }
-
-    return textNodes;
-  }
-
-  const updateTextNodes = (coefficient) => (textNodes) => {
-    textNodes.forEach((node) => {
-      // let result = '';
-      // let iterator = coefficient;
-
-      // while(iterator !== 0) {
-
-      // }
-      node.nodeValue = node.nodeValue + '!!!';
-    });
-  }
-
+async function Start() {
   const snfFrame = getSignNowIframe();
 
   if (snfFrame) {
-    const textNodes = getAllTextNodes(getContent(snfFrame))
-    updateTextNodes(2)(textNodes);
-    chrome.storage.sync.get(["myVariable"], ({ myVariable }) => {
-      console.log(myVariable);
-    });
-    console.log(textNodes);
+    const nodes = textNodes.getAll(getContent(snfFrame));
+    const { sizeFactor } = await chrome.storage.sync.get(['sizeFactor']);
+
+    textNodes.updateAll(toLengthenValuesSimple(sizeFactor))(nodes);
   } else {
     alert('SignNow Iframe didn\'t find');
   }
-})();
+}
+
+Start();
