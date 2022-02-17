@@ -6,23 +6,22 @@
   }
 
   chrome.runtime.onMessage.addListener((data) => {
-    if (data.type === 'notification') {
-      getActiveTab().then((tab) => {
+    if (data.type === 'run') {
+      getActiveTab().then(({ id }) => {
+        chrome.storage.sync.set({ myVariable: 'valueOfVariable' });
+
         chrome.scripting.executeScript({
-          target: { tabId: tab.id },
-          files: ["src/content.js"]
+          target: { tabId: id },
+          files: ["src/pageContent/index.js"]
         });
 
         // notification.js listen this message
-        chrome.notifications.create(
-          '',
-          {
-              type: 'basic',
-              title: 'Notify!',
-              message: data.message || 'Notify!',
-              iconUrl: './lang.png',
-          }
-        );
+        // chrome.notifications.create('', {
+        //   type: 'basic',
+        //   title: 'Notify!',
+        //   message: 'Notify!',
+        //   iconUrl: './lang.png',
+        // });
       });
     }
   });
