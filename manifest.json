@@ -23,5 +23,9 @@
   "background": {
     "service_worker": "src/background.js"
   },
-  "host_permissions": ["https://app.signnow.com/*"]
+  "host_permissions": [
+    "https://app.signnow.com/*",
+    "http://localhost/*",
+    "https://app3.signnow-dev.xyz/*"
+  ]
 }
