@@ -22,7 +22,7 @@
         type: 'basic',
         title: 'Notify!',
         message: data.message || 'Oh! Something went wrong.',
-        iconUrl: './lang.png',
+        iconUrl: './signNow.png',
       });
     }
   });

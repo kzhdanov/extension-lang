@@ -1,17 +1,17 @@
 {
-  "name": "Extension",
-  "description": "An extension",
+  "name": "Extension for test pseudolocalization",
+  "description": "Chrome extension for test pseudolocalization in snfiller editor.",
   "version": "1.0",
   "manifest_version": 3,
   "action": {
     "default_popup": "src/popup.html",
     "default_icon": {
-      "48": "src/lang.png",
-      "128": "src/lang.png"
+      "48": "src/signNow.png",
+      "128": "src/signNow.png"
     }
   },
   "icons": {
-    "128": "src/lang.png"
+    "128": "src/signNow.png"
   },
   "permissions": [
     "contextMenus",
