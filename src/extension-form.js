@@ -1,8 +1,9 @@
 (() => {
   const psevdolocalizeButton = document.getElementById('run-button');
+  const textInput  = document.getElementById('factor')
 
-  psevdolocalizeButton.addEventListener('click', () => {
-    const factor = Number(document.getElementById('factor').value) || 1;
+  const onEnter = () => {
+    const factor = Number(textInput.value) || 1;
 
     if (!factor || window.isNaN(factor)) {
       chrome.runtime.sendMessage('', { type: 'error', message: 'Incorrect factor value' });
@@ -15,5 +16,14 @@
     }
 
     chrome.runtime.sendMessage('', { type: 'run', factor });
-  });
+    requestAnimationFrame(() => window.close());
+  };
+
+  textInput.addEventListener('keydown', (keyboardEvent) => {
+    if (keyboardEvent.code === 'Enter') {
+      onEnter()
+    }
+  })
+
+  psevdolocalizeButton.addEventListener('click', onEnter);
 })();
