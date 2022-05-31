@@ -25,7 +25,8 @@
   },
   "host_permissions": [
     "https://app.signnow.com/*",
-    "http://localhost/*",
-    "https://app3.signnow-dev.xyz/*"
+    "https://app3.signnow-dev.xyz/*",
+    "https://app-rc.signnow.com/*",
+    "http://localhost/*"
   ]
 }
