@@ -27,6 +27,7 @@
     "https://app.signnow.com/*",
     "https://app3.signnow-dev.xyz/*",
     "https://app-rc.signnow.com/*",
+    "https://app.signnow-rc.xyz/*",
     "http://localhost/*"
   ]
 }
