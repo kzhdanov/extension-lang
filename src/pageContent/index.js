@@ -51,8 +51,6 @@ async function Start() {
     const { sizeFactor } = await chrome.storage.sync.get(['sizeFactor']);
 
     textNodes.updateAll(toLengthenValues(sizeFactor))(nodes);
-  } else {
-    alert('SignNow Iframe didn\'t find');
   }
 }
 

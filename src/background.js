@@ -7,12 +7,12 @@
 
   chrome.runtime.onMessage.addListener((data) => {
     if (data.type === 'run') {
-      getActiveTab().then(({ id }) => {
+      getActiveTab().then((props) => {
         chrome.storage.sync.set({ sizeFactor: data?.factor });
 
         chrome.scripting.executeScript({
-          target: { tabId: id },
-          files: ["dist/app.bundle.js"]
+          target: { tabId: props.id, allFrames: true },
+          files: ["dist/app.bundle.js"],
         });
       });
     }

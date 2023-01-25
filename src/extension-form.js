@@ -16,7 +16,7 @@
     }
 
     chrome.runtime.sendMessage('', { type: 'run', factor });
-    requestAnimationFrame(() => window.close());
+    setTimeout(() => window.close(), 500);
   };
 
   textInput.addEventListener('keydown', (keyboardEvent) => {
